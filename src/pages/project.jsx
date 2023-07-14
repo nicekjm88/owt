@@ -35,7 +35,7 @@ const Project = ({ data }) => {
                   src={node.frontmatter.image.childrenImageSharp[0].gatsbyImageData.images.fallback.src}
                   alt={node.frontmatter.title}
                   preview={{
-                    mask: <div><p>{node.frontmatter.title}</p>{node.frontmatter.dates}</div>,
+                    mask: <div><p>{node.frontmatter.title}</p></div>,
                   }}
                 />
               </div>
@@ -53,7 +53,7 @@ export const Head = () => <PageMeta title="Project" />
 
 export const query = graphql`
   query {
-    projectList: allMarkdownRemark(sort: {frontmatter: {dates: ASC}}) {
+    projectList: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
       edges {
         node {
           id
@@ -64,7 +64,7 @@ export const query = graphql`
                 gatsbyImageData
               }
             }
-            dates
+            date
           }
         }
       }

@@ -1,5 +1,6 @@
 import * as React from "react"
 import PageMeta from "../components/PageMeta"
+import { graphql } from "gatsby"
 import Layout from "./layout"
 import { Image } from "antd"
 // import Swiper core and required modules
@@ -13,10 +14,22 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/scrollbar"
 
-const Conti = () => {
+const Conti = ({ data }) => {
   return (
     <Layout>
       <h2 className="a11y-hidden">Conti</h2>
+
+      {/* {data.contiList.edges.map(({ node }) => (
+        <div key={node.id}>
+          <Image 
+            src={node.frontmatter.image.childrenImageSharp[0].gatsbyImageData.images.fallback.src}
+            alt={node.frontmatter.title}
+            preview={{
+              mask: <div><p>{node.frontmatter.title}</p>{node.frontmatter.date}</div>,
+            }}
+          />
+        </div>
+      ))} */}
 
       <Image.PreviewGroup>
         <Swiper
@@ -49,3 +62,24 @@ const Conti = () => {
 export default Conti
 
 export const Head = () => <PageMeta title="Conti" />
+
+export const query = graphql`
+  query {
+    contiList: allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            image {
+              childrenImageSharp {
+                gatsbyImageData
+              }
+            }
+            date
+          }
+        }
+      }
+    }
+  }
+`

@@ -14,8 +14,20 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: Title, name: title, widget: string, tagname: h1}
-      - {label: Dates, name: dates, widget: list}
+      - {label: Date, name: date, widget: "date"}
       - {label: Image, name: image, widget: image}
       - {label: Body, name: body, widget: markdown}
+  - name: "Conti"
+    preview: false
+    label: "Conti"
+    folder: "content/conti"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: Title, name: title, widget: string, tagname: h1}
+      - {label: Date, name: date, widget: "date"}
+      - {label: Image, name: image, widget: image}
+      - {label: Body, name: body, widget: markdown}      
+      
       
       
