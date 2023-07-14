@@ -31,7 +31,13 @@ const Project = ({ data }) => {
         >
             {data.projectList.edges.map(({ node }) => (
               <div key={node.id}>
-                <Image src={node.frontmatter.image.childrenImageSharp[0].gatsbyImageData.images.fallback.src} />
+                <Image 
+                  src={node.frontmatter.image.childrenImageSharp[0].gatsbyImageData.images.fallback.src}
+                  alt={node.frontmatter.title}
+                  preview={{
+                    mask: <div><p>{node.frontmatter.title}</p>{node.frontmatter.dates}</div>,
+                  }}
+                />
               </div>
             ))}
           
