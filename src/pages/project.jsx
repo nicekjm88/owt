@@ -47,7 +47,7 @@ export const Head = () => <PageMeta title="Project" />
 
 export const query = graphql`
   query {
-    projectList: allMarkdownRemark {
+    projectList: allMarkdownRemark(sort: {frontmatter: {dates: ASC}}) {
       edges {
         node {
           id
